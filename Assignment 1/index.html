@@ -1,0 +1,91 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Sunbeam Registration</title>
+    </head>
+    <style>
+        *{box-sizing: border-box;}
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        }
+        table, th, td {
+        border:1px solid black;
+        }
+
+        .column { 
+            float: left; width: 50%; padding: 5px;
+        }
+
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+
+        th, td {
+        text-align: left;
+        padding: 16px;
+        }
+        .form label {
+            width: 120px;    
+            display: inline-block;
+        }
+    </style>
+    <body>
+        <img src="logo.png" class="center" >
+        <h1 style="text-align: center;">Sunbeam Registration Form</h1>
+        <br>
+
+        <div class="row">
+            <div class="column">
+                <iframe style="width: 500px;height:315px" class="center" src="https://www.youtube.com/embed/02q9aAVv1NI" allowfullscreen></iframe>
+            </div>
+
+            <div class="column">
+            <form class="form" style="width: 60%;">
+
+            <label>Full Name:</label>
+            <input type="text" required><br><br>
+
+            <label>Birthdate:</label>
+            <input type="date" required><br><br>
+
+            <label>Email:</label>
+            <input type="email" required><br><br>
+
+            <label>Password</label>
+            <input type="password" required><br><br>
+
+            <label>Address:</label>
+            <textarea rows="1" cols="20"></textarea><br><br>
+
+            <label>Gender</label>
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female<br><br>
+
+            <label>Select Course:</label>
+            <select>
+                <option>Mern Stack</option>
+                <option>Java</option>
+                <option>Python</option>
+            </select><br><br>
+
+            <label>Skills set:</label>
+            <input type="checkbox">Java
+            <input type="checkbox">C++
+            <input type="checkbox">OS<br><br>
+
+            <label>Upload Photo</label>
+            <input type="file"><br><br>
+
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear">
+    </form>
+        </div>
+        </div>
+        
+    </body>
+</html>
