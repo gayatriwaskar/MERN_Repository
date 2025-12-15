@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Login Form</title>
+        <style>
+            body{
+                background-color: white;
+            }
+            .container{
+                border: 1px ;
+                padding: 25px;
+                width: 300px;
+                text-align: left;
+                margin: auto; 
+                margin-top: 10%;
+                border-radius: 20px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            }
+            h1{
+                text-align: center;
+                
+            }
+            .container input{
+                width: 250px;
+                height: 35px;
+                border-radius: 5px;
+            }
+
+            .container label{
+                font-size: large;
+            }
+
+            input{
+                margin-top: 10px;
+                border-width: 100%;
+            }
+
+        </style>
+
+    </head>  
+    <body>
+        <form onsubmit="return validate()">
+            <div class="container">
+                <h1>Login</h1>
+                <label for="email">Enter address</label><br>
+                <input type="email" placeholder="Enter email" id="email"  required><br><br>
+                <label for="password">Password</label><br>
+                <input type="text" placeholder="Password" id="password" minlength="8" required><br><br>
+                <input type="submit" value="Login" style="background-color:deepskyblue;border: none;">
+                
+            </div>
+            <script>
+                function validate()
+                {
+                    alert("Login Sucessfully!!")
+                }
+            </script>
+
+        </form>
+    </body>
+</html>
