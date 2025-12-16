@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+        <div class="input-area">
+            <input id="todo" placeholder="Enter a todo">
+            <button onclick="addData()" id="btn">Add</button>
+        </div>
+        <small id="todoerr"></small>
+            <ul id="list"></ul>
+    </div>
+    <script>
+        function addData() {
+            let input = document.getElementById("todo");
+            let text = input.value;
+            let error = document.getElementById("todoerr");
+
+
+            if (text === "") {
+                document.getElementById("todoerr").innerText = "Please enter the list";
+                return;
+            }
+
+            error.innerText = "";
+            let li = document.createElement("li");
+            li.innerHTML = `${text} <button onclick="deletetask(this)">Delete</button>`;
+            document.getElementById("list").appendChild(li);
+            input.value = "";
+
+        }
+        function deletetask(btn) {
+            btn.parentElement.remove();
+        }
+    </script>
+
+</body>
+
+</html>
