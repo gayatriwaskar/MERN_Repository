@@ -1,66 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
-        body{
-                background-color: white;
-            }
-            .container{
-                border: 1px ;
-                padding: 25px;
-                width: 350px;
-                height: 500px;
-                text-align: left;
-                margin: auto; 
-                margin-top: 5%;
-                border-radius: 20px;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            }
-            h1{
-                text-align: center;
-                
-            }
-            .container input{
-                width: 300px;
-                height: 35px;
-                border-radius: 5px;
-            
-            }
-            .container label{
-                font-size:large;
-            }
-            input{
-                margin-top: 10px;
-            }
+        body {
+            background-color: white;
+        }
 
+        .container {
+            border: 1px;
+            padding: 25px;
+            width: 320px;
+            height: auto;
+            text-align: left;
+            margin: auto;
+            margin-top: 5%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+
+        }
+
+        .container input {
+            width: 300px;
+            height: 35px;
+            border-radius: 5px;
+
+        }
+
+        .container label {
+            font-size: large;
+        }
+
+        input {
+            margin-top: 10px;
+        }
+        button{
+            width: 300px;
+            height:35px;
+            border-radius: 5px;
+            border: none;
+        }
     </style>
 </head>
-<body>
-    <form onsubmit="return validate()">
-            <div class="container">
-                <h1>Register</h1>
-                <label for="name">Name</label><br>
-                <input type="text" placeholder="Enter name" id="name" required><br><br>
-                <label for="email">Enter email</label><br>
-                <input type="email" placeholder="Enter email" id="email"  required><br><br>
-                <label for="password">Password</label><br>
-                <input type="text" placeholder="Password" id="password" minlength="8" required><br><br>
-                <label for="phone">Phone Number</label><br>
-                <input type="tel" placeholder="Enter phone number" minlength="10" required><br><br>
-                <input type="submit" value="Login" style="background-color:deepskyblue;font-size: medium;border: none;">
-                
-            </div>
-            <script>
-                function validate()
-                {
-                    alert("Register Sucessfully!!")
-                }
-            </script>
 
-        </form>
-    
+<body>
+    <form>
+        <div class="container">
+            <h1>Register</h1>
+            <label for="name">Name</label><br>
+            <input type="text" placeholder="Enter name" id="name" required><br>
+            <small id="nameerr" style="color: red;font-size: medium;"></small><br>
+            <label for="email">Enter email</label><br>
+            <input type="text" placeholder="Enter email" id="email" required><br>
+            <small id="emailerr" style="color: red;font-size: medium;"></small><br>
+            <label for="password">Password</label><br>
+            <input type="text" placeholder="Password" id="password" required><br>
+            <small id="passerr" style="color: red;font-size: medium;"></small><br>
+            <label for="phone">Phone Number</label><br>
+            <input type="tel" placeholder="Enter phone number" id="phone" required><br>
+            <small id="phoneerr" style="color: red;font-size: medium;"></small><br><br>
+            <button type="button" onclick="validateRegister()" style="background-color:deepskyblue;font-size: medium;border: none;">Register</button>
+
+        </div>
+
+
+    </form>
+    <script>
+        function validateRegister() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let phone = document.getElementById("phone").value;
+
+
+            document.getElementById("emailerr").innerText = "";
+            document.getElementById("passerr").innerText = "";
+            document.getElementById("nameerr").innerText = "";
+            document.getElementById("phoneerr").innerText = "";
+
+            let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let phonepattern = /^[0-9]{10}$/;
+            if(name==="" && email==="" && password==="" && phone==="")
+            {
+                document.getElementById("nameerr").innerText = "Enter name";
+                document.getElementById("emailerr").innerText = "Enter email";
+                document.getElementById("passerr").innerText = "Enter password";
+                document.getElementById("phoneerr").innerText = "Please enter 10 digits number";
+            }
+            if (name === "") {
+                document.getElementById("nameerr").innerText = "Enter name";
+                return;
+                
+            }
+            if (email === "") {
+                document.getElementById("emailerr").innerText = "Enter email";
+                return;
+            }
+            if (!emailpattern.test(email)) {
+                document.getElementById("emailerr").innerText = "Enter the valid email";
+                return;
+            }
+            if (password === "") {
+                document.getElementById("passerr").innerText = "Enter password";
+                return;
+            }
+            if (password.length < 8) {
+                document.getElementById("passerr").innerText = "Enter atleast 8 character";
+                return;
+            }
+            if (!phonepattern.test(phone)) {
+                document.getElementById("phoneerr").innerText = "Please enter 10 digits number";
+                return;
+            }
+            alert("Register Sucessfully!!");
+        }
+    </script>
+
 </body>
+
 </html>

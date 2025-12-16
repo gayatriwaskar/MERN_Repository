@@ -13,6 +13,7 @@
                 border: 1px ;
                 padding: 25px;
                 width: 300px;
+                height: auto;
                 text-align: left;
                 margin: auto; 
                 margin-top: 10%;
@@ -37,25 +38,66 @@
                 margin-top: 10px;
                 border-width: 100%;
             }
+            button{
+            width: 300px;
+            height:35px;
+            border-radius: 5px;
+            border: none;
+         }
 
         </style>
 
     </head>  
     <body>
-        <form onsubmit="return validate()">
+        <form >
             <div class="container">
                 <h1>Login</h1>
                 <label for="email">Enter address</label><br>
-                <input type="email" placeholder="Enter email" id="email"  required><br><br>
+                <input type="email" placeholder="Enter email" id="email"  required><br>
+                <small class="em" id="emailerr" style="color: red;font-size: medium;"></small><br>
                 <label for="password">Password</label><br>
-                <input type="text" placeholder="Password" id="password" minlength="8" required><br><br>
-                <input type="submit" value="Login" style="background-color:deepskyblue;border: none;">
+                <input type="text" placeholder="Password" id="password" required><br>
+                <small class="pass" id="passerr" style="color: red;font-size: medium;"></small><br>
+                <button type="button" onclick="validate()" style="background-color:deepskyblue;font-size: medium;border: none;">Login</button>
                 
             </div>
             <script>
                 function validate()
                 {
+                    let email=document.getElementById("email").value;
+                    let password=document.getElementById("password").value;
+
+                    document.getElementById("emailerr").innerText="";
+                    document.getElementById("passerr").innerText="";
+
+                    let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if(email==="" && password==="")
+                {
+                    document.getElementById("emailerr").innerText="Enter email";
+                    document.getElementById("passerr").innerText="Enter password";
+                }
+                if(email==="")
+                {
+                    document.getElementById("emailerr").innerText="Enter email";
+                    return ;
+                }
+                if(!emailpattern.test(email))
+                {
+                    document.getElementById("emailerr").innerText="Enter the valid email";
+                    return ;
+                }
+                 if(password==="")
+                {
+                    document.getElementById("passerr").innerText="Enter password";
+                    return ;
+                }
+                if(password.length<8)
+                {
+                    document.getElementById("passerr").innerText="Enter atleast 8 character";
+                    return ;
+                }
                     alert("Login Sucessfully!!")
+                
                 }
             </script>
 
